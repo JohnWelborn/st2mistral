@@ -143,7 +143,7 @@ class St2Action(base.Action):
         skip_notify_tasks = self.st2_context.get('skip_notify_tasks', [])
         task_name = self.action_context.get('task_name', 'unknown')
 
-        if task_name not in skip_notify_tasks:
+        if task_name not in skip_notify_tasks and '*' not in skip_notify_tasks:
             # We only include notifications settings if the task is not to be skipped
             body['notify'] = notify
 
